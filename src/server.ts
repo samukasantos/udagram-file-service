@@ -66,6 +66,10 @@ import {filterImageFromURL, isValidURL, readFilesFromDirectory } from './util/ut
       }
  )
 });
+
+app.get("/", (req, res, next) => {
+  res.send("Welcome to UDAGRAM!");
+ });
   
 
   // Start the Server
