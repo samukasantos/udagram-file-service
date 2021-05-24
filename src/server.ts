@@ -36,7 +36,7 @@ import {filterImageFromURL, isValidURL, readFilesFromDirectory } from './util/ut
   // Displays a simple message to the user
   app.get( "/filteredimage", async ( req, res ) => {
 
-    let { image_url } =  req.query 
+    let image_url : string =  req.query.image_url
     
     if ( !image_url ) {
         return res.status(400).send(`URL is required.`);
@@ -47,10 +47,9 @@ import {filterImageFromURL, isValidURL, readFilesFromDirectory } from './util/ut
     }
 
     const imageToBase64 = require('image-to-base64');
-    //console.log(__dirname);
-
+   
     imageToBase64(image_url)
-      .then((base64: any)=>{
+      .then((base64: string)=>{
 
         filterImageFromURL(base64)
           .then((value)=>{
@@ -67,6 +66,7 @@ import {filterImageFromURL, isValidURL, readFilesFromDirectory } from './util/ut
  )
 });
 
+//Default endpoint.
 app.get("/", (req, res, next) => {
   res.send("Welcome to UDAGRAM!");
  });
